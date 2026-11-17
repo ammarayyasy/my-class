@@ -1,11 +1,803 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Website Resmi Kelas - XII MIPA 1</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================= RESET & DASAR ================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary: #0ea5e9;
+            --accent: #f59e0b;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.07), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            background-color: var(--light);
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ================= NAVBAR ================= */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: #475569;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn-nav {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white) !important;
+            padding: 8px 20px;
+            border-radius: 25px;
+            transition: transform 0.2s, box-shadow 0.2s !important;
+        }
+
+        .btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        /* ================= HERO SECTION ================= */
+        .hero {
+            padding: 90px 0 70px;
+            background: radial-gradient(circle at 10% 20%, rgba(219, 234, 254, 0.7) 0%, rgba(248, 250, 252, 1) 90%);
+        }
+
+        .hero-wrapper {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .badge-pill {
+            display: inline-block;
+            background-color: #dbeafe;
+            color: var(--primary-dark);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            line-height: 1.25;
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+            background: linear-gradient(120deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-outline {
+            border: 2px solid #cbd5e1;
+            background: var(--white);
+            color: #334155;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+        }
+
+        /* ================= STATS SECTION ================= */
+        .stats {
+            margin-top: -35px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid #edf2f7;
+        }
+
+        .stat-item {
+            text-align: center;
+            border-right: 1px solid #e2e8f0;
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        /* ================= SECTIONS UMUM ================= */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 50px;
+        }
+
+        .section-tag {
+            color: var(--primary);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 12px;
+        }
+
+        .section-desc {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        /* ================= STRUKTUR KELAS ================= */
+        .structure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .profile-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            border: 1px solid #f1f5f9;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            object-fit: cover;
+            border: 4px solid #e0f2fe;
+        }
+
+        .profile-role {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: #e0f2fe;
+            color: var(--primary-dark);
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .profile-name {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .profile-quote {
+            font-size: 0.85rem;
+            color: var(--gray);
+            font-style: italic;
+        }
+
+        /* ================= JADWAL & AGENDA ================= */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .schedule-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+            border-top: 4px solid var(--primary);
+        }
+
+        .schedule-card h3 {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .schedule-list {
+            list-style: none;
+        }
+
+        .schedule-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #e2e8f0;
+            font-size: 0.95rem;
+        }
+
+        .schedule-list li:last-child {
+            border-bottom: none;
+        }
+
+        .schedule-day {
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .schedule-time {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        /* ================= GALERI ================= */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            height: 220px;
+            box-shadow: var(--card-shadow);
+            group: hover;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.8), transparent);
+            color: var(--white);
+            padding: 20px 15px 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            background-color: var(--dark);
+            color: #cbd5e1;
+            padding: 50px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-about h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-about p {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            max-width: 380px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #1e293b;
+            padding-top: 25px;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 900px) {
+            .hero-wrapper {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-item:nth-child(2) {
+                border-right: none;
+            }
+
+            .stat-item:nth-child(-n+2) {
+                border-bottom: 1px solid #e2e8f0;
+                padding-bottom: 15px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+                gap: 12px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                font-size: 0.85rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-item {
+                border-right: none !important;
+                border-bottom: 1px solid #e2e8f0;
+                padding-bottom: 10px;
+            }
+
+            .stat-item:last-child {
+                border-bottom: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Ini  adalah halaman beranda</h1>
+
+    <!-- ================= NAVBAR ================= -->
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <span>🏫</span> XII MIPA 1
+            </a>
+            <ul class="nav-links">
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="about_us.html">Tentang Kami</a></li>
+                <li><a href="#struktur">Pengurus</a></li>
+                <li><a href="#jadwal">Jadwal</a></li>
+                <li><a href="#galeri">Galeri</a></li>
+                <li><a href="about_us.html" class="btn-nav">Detail Kelas</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero" id="beranda">
+        <div class="container hero-wrapper">
+            <div class="hero-content">
+                <span class="badge-pill">🎓 Angkatan 2025 / 2026</span>
+                <h1>Satu Visi, Satu Hati, <span>Mengukir Prestasi</span></h1>
+                <p>Selamat datang di laman resmi kelas XII MIPA 1. Ruang kreasi, persahabatan, kenangan, dan pusat informasi aktivitas belajar bersama kami.</p>
+                <div class="hero-actions">
+                    <a href="about_us.html" class="btn btn-primary">Tentang Kelas Kami</a>
+                    <a href="#struktur" class="btn btn-outline">Lihat Pengurus</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Foto Bersama Siswa Kelas">
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= STATISTIK ================= -->
+    <div class="container stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">36</div>
+                <div class="stat-label">Total Anggota Siswa</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">18 : 18</div>
+                <div class="stat-label">Siswa & Siswi</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">12+</div>
+                <div class="stat-label">Prestasi / Lomba</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Kekompakan & Solid</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= STRUKTUR KELAS ================= -->
+    <section id="struktur">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Kepengurusan</span>
+                <h2 class="section-title">Struktur Organisasi Kelas</h2>
+                <p class="section-desc">Mengenal susunan pengurus kelas yang berdedikasi menjaga kekompakan dan kelancaran kegiatan sehari-hari.</p>
+            </div>
+
+            <div class="structure-grid">
+                <!-- Wali Kelas -->
+                <div class="profile-card">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80" alt="Wali Kelas" class="profile-avatar">
+                    <span class="profile-role">Wali Kelas</span>
+                    <h3 class="profile-name">Ibu Sri Wahyuni, M.Pd</h3>
+                    <p class="profile-quote">"Pendidikan adalah kunci untuk membuka pintu emas kebebasan."</p>
+                </div>
+
+                <!-- Ketua Kelas -->
+                <div class="profile-card">
+                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=300&q=80" alt="Ketua Kelas" class="profile-avatar">
+                    <span class="profile-role">Ketua Kelas</span>
+                    <h3 class="profile-name">Ahmad Fauzi</h3>
+                    <p class="profile-quote">"Memimpin dengan teladan, melayani dengan hati."</p>
+                </div>
+
+                <!-- Wakil Ketua -->
+                <div class="profile-card">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80" alt="Wakil Ketua" class="profile-avatar">
+                    <span class="profile-role">Wakil Ketua</span>
+                    <h3 class="profile-name">Nabila Putri</h3>
+                    <p class="profile-quote">"Solidaritas adalah kekuatan terbesar kelas kita."</p>
+                </div>
+
+                <!-- Sekretaris -->
+                <div class="profile-card">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Sekretaris" class="profile-avatar">
+                    <span class="profile-role">Sekretaris</span>
+                    <h3 class="profile-name">Zahra Annisa</h3>
+                    <p class="profile-quote">"Rapi dalam mencatat, tertib dalam tindakan."</p>
+                </div>
+
+                <!-- Bendahara -->
+                <div class="profile-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Bendahara" class="profile-avatar">
+                    <span class="profile-role">Bendahara</span>
+                    <h3 class="profile-name">Rizky Pratama</h3>
+                    <p class="profile-quote">"Kas kelas lancar, program jalan terus!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= JADWAL & PIKET ================= -->
+    <section id="jadwal" style="background-color: #f1f5f9;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Agenda & Rutinitas</span>
+                <h2 class="section-title">Jadwal Pembelajaran & Piket</h2>
+                <p class="section-desc">Informasi jadwal ringkas untuk membantu ketertiban dan kedisiplinan anggota kelas.</p>
+            </div>
+
+            <div class="schedule-grid">
+                <!-- Highlight Mata Pelajaran -->
+                <div class="schedule-card">
+                    <h3>📚 Jadwal Utama Hari Ini</h3>
+                    <ul class="schedule-list">
+                        <li>
+                            <span class="schedule-day">Matematika Peminatan</span>
+                            <span class="schedule-time">07.30 - 09.00</span>
+                        </li>
+                        <li>
+                            <span class="schedule-day">Fisika Terapan</span>
+                            <span class="schedule-time">09.15 - 10.45</span>
+                        </li>
+                        <li>
+                            <span class="schedule-day">Bahasa Indonesia</span>
+                            <span class="schedule-time">11.00 - 12.30</span>
+                        </li>
+                        <li>
+                            <span class="schedule-day">Kimia Analisis</span>
+                            <span class="schedule-time">13.15 - 14.45</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Jadwal Piket Kebersihan -->
+                <div class="schedule-card">
+                    <h3>🧹 Jadwal Piket Kebersihan</h3>
+                    <ul class="schedule-list">
+                        <li>
+                            <span class="schedule-day">Senin</span>
+                            <span class="schedule-time">Fauzi, Zahra, Budi, Siti</span>
+                        </li>
+                        <li>
+                            <span class="schedule-day">Selasa</span>
+                            <span class="schedule-time">Rizky, Nabila, Dika, Alya</span>
+                        </li>
+                        <li>
+                            <span class="schedule-day">Rabu</span>
+                            <span class="schedule-time">Bayu, Tiara, Dimas, Maya</span>
+                        </li>
+                        <li>
+                            <span class="schedule-day">Kamis</span>
+                            <span class="schedule-time">Gilang, Putri, Kevin, Rina</span>
+                        </li>
+                        <li>
+                            <span class="schedule-day">Jumat</span>
+                            <span class="schedule-time">Eko, Melati, Fajar, Indah</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Agenda Terdekat -->
+                <div class="schedule-card">
+                    <h3>📢 Agenda Terdekat</h3>
+                    <ul class="schedule-list">
+                        <li>
+                            <span class="schedule-day">Simulasi Ujian Tengah Semester</span>
+                            <span class="schedule-time">25 Nov 2026</span>
+                        </li>
+                        <li>
+                            <span class="schedule-day">Classmeeting & Olahraga</span>
+                            <span class="schedule-time">10 Des 2026</span>
+                        </li>
+                        <li>
+                            <span class="schedule-day">Bakti Sosial Angkatan</span>
+                            <span class="schedule-time">18 Des 2026</span>
+                        </li>
+                        <li>
+                            <span class="schedule-day">Study Tour Kelas</span>
+                            <span class="schedule-time">05 Jan 2027</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= GALERI ================= -->
+    <section id="galeri">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Dokumentasi</span>
+                <h2 class="section-title">Galeri Momen Kebersamaan</h2>
+                <p class="section-desc">Kumpulan kenangan dan momen seru selama kita bersama di bangku sekolah.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Momen Bersama">
+                    <div class="gallery-caption">Keseruan Classmeeting</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Belajar di Kelas">
+                    <div class="gallery-caption">Praktikum Laboratorium</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80" alt="Pentas Seni">
+                    <div class="gallery-caption">Tampil di Pentas Seni</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80" alt="Kerja Kelompok">
+                    <div class="gallery-caption">Diskusi Kelompok Seru</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>🏫 XII MIPA 1</h3>
+                    <p>Website resmi kelas yang dibuat sebagai wadah komunikasi, dokumentasi prestasi, dan kenangan indah sepanjang masa sekolah.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigasi Cepat</h4>
+                    <ul>
+                        <li><a href="#beranda">Beranda</a></li>
+                        <li><a href="about_us.html">Tentang Kelas</a></li>
+                        <li><a href="#struktur">Pengurus</a></li>
+                        <li><a href="#jadwal">Jadwal & Agenda</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontak & Sosmed</h4>
+                    <ul>
+                        <li><a href="#">Instagram: @xiimipa1.solid</a></li>
+                        <li><a href="#">TikTok: @xiimipa1.story</a></li>
+                        <li><a href="#">Email: xiimipa1@sekolah.sch.id</a></li>
+                        <li><a href="#">Ruang: Gedung B, Lantai 2</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 XII MIPA 1. Dibuat dengan bangga oleh tim kelas.</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
