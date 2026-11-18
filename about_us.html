@@ -1,14 +1,298 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Our Class</title>
+    <title>Tentang Kelas XII MIPA 1</title>
+    <!-- Google Fonts per desain system -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-canvas: #F8F8F6;
+            --bg-surface: #FFFFFF;
+            --bg-subtle: #F1F3F5;
+            --text-primary: #111111;
+            --text-secondary: #4A4A4A;
+            --text-muted: #767676;
+            --text-inverse: #FFFFFF;
+            --border-hairline: #E5E5E0;
+            --border-focus: #111111;
+            --accent-blue: #2563EB;
+            --accent-orange: #F97316;
+            --accent-green: #10B981;
+            --accent-pink: #EC4899;
+            --font-serif: 'Newsreader', 'Playfair Display', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+            --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02);
+            --shadow-floating: 0 12px 32px -4px rgba(17, 17, 17, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-sans), sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 60px;
+        }
+
+        .section-tag {
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .section-title {
+            font-family: var(--font-serif), serif;
+            font-size: 36px;
+            line-height: 1.15;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .max-w-800 {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .profil-card {
+            background: var(--bg-surface);
+            border-radius: var(--radius-lg);
+            padding: 32px 24px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-hairline);
+            margin-bottom: 32px;
+        }
+
+        .profil-card:hover {
+            box-shadow: 0 12px 32px -4px rgba(17, 17, 17, 0.08);
+        }
+
+        .avatar-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .profil-avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: var(--radius-full);
+            object-fit: cover;
+            border: 3px solid var(--bg-canvas);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+        }
+
+        .aurora-blue { background: linear-gradient(135deg, rgba(30, 64, 175, 0.3), rgba(59, 130, 246, 0.3)); }
+        .aurora-orange { background: linear-gradient(135deg, rgba(249, 115, 22, 0.3), rgba(234, 88, 12, 0.3)); }
+        .aurora-green { background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(190, 242, 100, 0.3)); }
+        .aurora-pink { background: linear-gradient(135deg, rgba(236, 72, 153, 0.3), rgba(244, 114, 182, 0.3)); }
+
+        .profil-role {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .profil-name {
+            font-family: var(--font-serif), serif;
+            font-size: 22px;
+            line-height: 1.2;
+            color: var(--text-primary);
+            font-weight: 400;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        .profil-quote {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: 12px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .info-item {
+            text-align: left;
+        }
+
+        .info-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .info-value {
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+            font-weight: 500;
+        }
+
+        .info-value span {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 400;
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--bg-surface);
+            color: var(--text-primary);
+            border: 1px solid var(--border-hairline);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            margin-top: 24px;
+        }
+
+        .btn-back:hover {
+            background: var(--bg-subtle);
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        @media (max-width: 640px) {
+            .section-title {
+                font-size: 28px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>About Class</h1>
 
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam eveniet omnis ipsum, sequi reiciendis cupiditate? Animi natus perspiciatis dolores, earum cumque veniam, autem ipsa eos odio id itaque soluta aliquid!</p>
-    <img src="https://picsum.photos/200/300" alt="" srcset="">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Tentang Kami</span>
+            <h2 class="section-title">Tentang Kelas XII MIPA 1</h2>
+            <p class="section-desc">Tim kelas XII MIPA 1 yang berdedikasi menciptakan kenangan indah dan menjaga komunikasi terus-menerus sepanjang masa sekolah.</p>
+        </div>
+    </div>
+
+    <div class="max-w-800">
+        <!-- About Content -->
+        <p>Website ini merupakan hasil projek Pengembangan Aplikasi Berbasis Web yang dibuat oleh anggota kelas XII MIPA 1 sebagai wadah komunikasi, dokumentasi prestasi, serta media berbagi kenangan indah sepanjang masa sekolah. Laman ini dirancang dengan gaya desain "Editorial-Tech & Vibrant Abstract" yang menggabungkan estetika akademis klasik dengan sentikan teknologi modern dan aksesori visual cerah.</p>
+
+        <p>Melalui desain ini, harapan kami adalah memberikan pengalaman pengguna yang nyaman, informatif, dan estetika yang megkalirkan semangat kerjasama serta prestasi bersama-sama di kelas XII MIPA 1.</p>
+
+        <!-- Profil Pengurus -->
+        <div class="section-header" style="margin-top: 80px;">
+            <span class="section-tag">Pengurus</span>
+            <h2 class="section-title">Profil Anggota Pengurus</h2>
+        </div>
+
+        <div class="info-grid">
+            <!-- Wali Kelas -->
+            <div class="profil-card">
+                <div class="avatar-wrapper">
+                    <img src="https://picsum.photos/200/300" alt="Wali Kelas" class="profil-avatar aurora-blue">
+                </div>
+                <span class="profil-role">Wali Kelas</span>
+                <h3 class="profil-name">Sanusi MD</h3>
+                <p class="profil-quote">"Pendidikan adalah kunci untuk membuka pintu emas kebebasan."</p>
+            </div>
+
+            <!-- Ketua Kelas -->
+            <div class="profil-card">
+                <div class="avatar-wrapper">
+                    <img src="https://picsum.photos/200/300" alt="Ketua Kelas" class="profil-avatar aurora-orange">
+                </div>
+                <span class="profil-role">Ketua Kelas</span>
+                <h3 class="profil-name">Ringga Donelly</h3>
+                <p class="profil-quote">"Memimpin dengan teladan, melayani dengan hati."</p>
+            </div>
+
+            <!-- Wakil Ketua -->
+            <div class="profil-card">
+                <div class="avatar-wrapper">
+                    <img src="https://picsum.photos/200/300" alt="Wakil Ketua" class="profil-avatar aurora-green">
+                </div>
+                <span class="profil-role">Wakil Ketua</span>
+                <h3 class="profil-name">Nabila Putri</h3>
+                <p class="profil-quote">"Solidaritas adalah kekuatan terbesar kelas kita."</p>
+            </div>
+
+            <!-- Sekretaris -->
+            <div class="profil-card">
+                <div class="avatar-wrapper">
+                    <img src="https://picsum.photos/200/300" alt="Sekretaris" class="profil-avatar aurora-pink">
+                </div>
+                <span class="profil-role">Sekretaris</span>
+                <h3 class="profil-name">Zahra Annisa</h3>
+                <p class="profil-quote">"Rapi dalam mencatat, tertib dalam tindakan."</p>
+            </div>
+
+            <!-- Bendahara -->
+            <div class="profil-card">
+                <div class="avatar-wrapper">
+                    <img src="https://picsum.photos/200/300" alt="Bendahara" class="profil-avatar aurora-blue">
+                </div>
+                <span class="profil-role">Bendahara</span>
+                <h3 class="profil-name">Rizky Pratama</h3>
+                <p class="profil-quote">"Kas kelas lancar, program jalan terus!"</p>
+            </div>
+        </div>
+
+        <a href="index.html" class="btn-back">Kembali ke Beranda</a>
+    </div>
+
 </body>
 </html>
